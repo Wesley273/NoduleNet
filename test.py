@@ -32,7 +32,7 @@ plt.rcParams['figure.figsize'] = (24, 16)
 plt.switch_backend('agg')
 this_module = sys.modules[__name__]
 os.environ['CUDA_VISIBLE_DEVICES'] = '2'
-
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--net', '-m', metavar='NET', default=config['net'],
@@ -65,7 +65,7 @@ def main():
         out_dir = args.out_dir
 
         net = getattr(this_module, net)(config)
-        net = net.cuda()
+        net = net.to(device)
 
         if initial_checkpoint:
             print('[Loading model from %s]' % initial_checkpoint)

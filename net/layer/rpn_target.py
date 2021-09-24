@@ -5,6 +5,8 @@ except ImportError:
     from utils.util import py_nms as torch_nms
     from utils.util import py_box_overlap as torch_overlap
 import random
+import numpy as np
+import torch
 from net.layer.rpn_nms import rpn_encode
 from torch.autograd import Variable
 

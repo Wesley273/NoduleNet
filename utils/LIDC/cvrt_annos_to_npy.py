@@ -66,7 +66,7 @@ def arrs2mask(img_dir, ctr_arr_dir, save_dir):
 
     for pid in tqdm(pids, total=len(pids)):
         img, origin, spacing = load_itk_image(os.path.join(img_dir, '%s.mhd' % (pid)))
-        ctr_arrs = np.load(os.path.join(ctr_arr_dir, '%s.npy' % (pid)))
+        ctr_arrs = np.load(os.path.join(ctr_arr_dir, '%s.npy' % (pid)), allow_pickle=True)
         cnt += len(ctr_arrs)
 
         nodule_masks = []
